@@ -32,22 +32,24 @@ const AddCustomer=()=>{
         .then(res=>{
             // console.log(res);
             if(res.data.customer){
-                setTimeout(function() {  
+                
                     new Noty({
                         text: `${res.data.customer}`,
                         layout:'topCenter',
+                        timeout:1000,
                         type:'error'
                     }).show();
-                  }, 500);
+                
             }
             else{
-                setTimeout(function() {  
+                
                     new Noty({
                         text: `User saved with customer ID;- ${res.data.saved.customerId}`,
                         layout:'topCenter',
+                        timeout:1000,
                         type:'success'
                     }).show();
-                  }, 500);
+                  
             }
         })
         .catch(err=>{
@@ -59,11 +61,12 @@ const AddCustomer=()=>{
         <>
             <h1> AddCustomer </h1>
             <form onSubmit={onSubmits}>
-                <label htmlFor="">Enter customer name:-</label><br />
+                <label htmlFor="">Enter customer name:-</label><br /><br />
                 <input type="text" name="customerName" onChange={onChanges} /><br /><br />
-                <label htmlFor="">Enter customer name:-</label><br />
+                <label htmlFor="">Enter customer ID:-</label><br /><br />
                 <input type="text" name="customerId" onChange={onChanges} /><br /><br />
                 <button type='submit'>submit</button>
+                <br /><br />
             </form>
         </>
     );

@@ -30,13 +30,14 @@ const AddMilk=()=>{
             
             if(res.data.User){
                 console.log(res.data.User);
-                setTimeout(function() {  
+               
                     new Noty({
                         text: `${res.data.User}`,
                         layout:'topCenter',
+                        timeout:1000,
                         type:'error'
                     }).show();
-                  }, 500);
+                
             }
             else{
                 setTimeout(function() {  

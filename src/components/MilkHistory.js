@@ -1,7 +1,13 @@
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Noty from 'noty';
+import moment from 'moment';
+import "../../node_modules/noty/lib/noty.css";  
+import "../../node_modules/noty/lib/themes/mint.css";  
 import './table.css';
 const MilkHistory=()=>{
+    const [total,setTotal]=useState(0);
     const [loaded,setLoaded]=useState(false);
     const [loading,setLoading]=useState(false);
     const [customerId,setCustomerId]=useState(null);
@@ -14,16 +20,27 @@ const MilkHistory=()=>{
         e.preventDefault();  //here i stop the default behaviour of form
         // setLoading(true);
         e.target.reset(); //for erase fields after submit form
-        console.log(customerId);
+        // console.log(customerId);
          axios.get(`https://dairymilkapi.herokuapp.com/findMilkData/${customerId}`)
        .then((data)=>{
          setLoaded(true);
          if(data.data.message){
+             setLoaded(false);
              setError(data.data.message);
-         }else{
-             console.log(data);
-
+             new Noty({
+                text: `${data.data.message}`,
+                layout:'topCenter',
+                timeout:1000,
+                type:'error'
+            }).show();
+         }
+         else{
              setData(data.data.milkHistory);
+             var total_liter=0;
+             data.data.milkHistory.map((t)=>{
+                 total_liter+=t.liter;
+             });
+             setTotal(total_liter);
          }
         })
         .catch(err=>console.log(err));
@@ -50,11 +67,11 @@ const MilkHistory=()=>{
             <h1>Loading...</h1>
         );
    }
-   else if(error){
-    return(
-        <h1>{error}</h1>
-    );
-}
+//    else if(error){
+//     return(
+//         <h1>{error}</h1>
+//     );
+// }
    else if(loaded){             
        return(
          <div >
@@ -64,21 +81,28 @@ const MilkHistory=()=>{
             <tbody>
                 <tr>
                     <th>CustomerId</th>
+                    <th>Date</th>
                     <th>Liter</th>
                     <th>Fat</th>
-                    <th>Date</th>
                 </tr>
                 {data.map(( listValue ) => {
-               return (
+                    return (
+                   
               <tr key={listValue._id}>
+              <td>{moment(listValue.updatedAt).format('MMMM Do YYYY, h:mm')}</td>
               <td>{listValue.customerId}</td>
               <td>{listValue.liter}</td>
               <td>{listValue.fat}</td>
-              <td>{listValue.createdAt}</td>
             </tr>
           );
         })}
              </tbody>
+             <tfoot>
+    <tr>
+      <th id="total" colSpan="2">Total Liter :</th>
+      <td>{total}</td>
+      </tr>
+      </tfoot>
             </table>
             </div>
              
