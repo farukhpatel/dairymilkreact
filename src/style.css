@@ -1,0 +1,42 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.navbar{
+    background-color:black;
+    color: white;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.navbar ul{
+    display: flex;
+}
+.navbar ul li{
+  list-style: none;
+  padding-left: 10px;
+  padding-right: 10px;  
+}
+.navbar ul li a{
+    color: azure;
+    text-decoration: none;
+}
+.navbar ul li a:hover{
+    color: rgb(35, 114, 157);
+}
+footer p{
+    color: white;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: black;
+    height: auto;
+    bottom: 0;
+}

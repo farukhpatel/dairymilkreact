@@ -1,0 +1,28 @@
+.table_div{
+    margin: 35px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 15px;
+}
+tbody{
+    overflow: scroll;
+}
+table {
+    width: 80%;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+  }
+table, th, td {
+    border: 1px solid black;
+}
+@media screen and (max-width: 600px) {
+    table{
+        width: 100%;
+        overflow: scroll;
+        overflow: visible;
+    }
+  }
