@@ -89,8 +89,8 @@ const MilkHistory=()=>{
                     return (
                    
               <tr key={listValue._id}>
-              <td>{moment(listValue.updatedAt).format('MMMM Do YYYY, h:mm')}</td>
               <td>{listValue.customerId}</td>
+              <td>{moment(listValue.updatedAt).format('MMMM Do YYYY, h:mm')}</td>
               <td>{listValue.liter}</td>
               <td>{listValue.fat}</td>
             </tr>
