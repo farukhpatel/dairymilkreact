@@ -38,7 +38,7 @@ const Navbar=()=>{
         </div>
 
         </Router>
-        <footer><p>@copyright all right reserved</p></footer>
+        <footer><p>@copyright all right reserved farukh patel</p></footer>
     </div>
   );
 }

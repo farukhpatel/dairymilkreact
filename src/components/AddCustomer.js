@@ -21,7 +21,7 @@ const AddCustomer=()=>{
     const onSubmits=(e)=>{
         e.preventDefault();
         e.target.reset();
-        console.log(form);
+        // console.log(form);
         var config = {
             method: 'post',
             url: 'https://dairymilkapi.herokuapp.com/addCustomer',
@@ -30,7 +30,7 @@ const AddCustomer=()=>{
             };
         axios(config)
         .then(res=>{
-            console.log(res);
+            // console.log(res);
             if(res.data.customer){
                 setTimeout(function() {  
                     new Noty({
