@@ -57,7 +57,7 @@ const MilkHistory=()=>{
         //you can submit here
     }
    
-   if(!loaded){
+   if(!loaded && !loading){
     return(
         <>
             <h1>MilkHistory {customerId}</h1>
