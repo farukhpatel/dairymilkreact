@@ -24,7 +24,7 @@ const MilkHistory=()=>{
         // console.log(customerId);
          axios.get(`https://dairymilkapi.herokuapp.com/findMilkData/${customerId}`)
        .then((data)=>{
-        // setLoading(false);
+        setLoading(false);
          setLoaded(true);
          if(data.data.message){
              setLoaded(false);
