@@ -14,7 +14,7 @@ const MilkHistory=()=>{
     const [data,setData]=useState([]);
     const [error,setError]=useState(null);
     const onChanges=(e)=>{       
-        setCustomerId(e.target.value);
+        setCustomerId(Number(e.target.value));
     }
     const onSubmits=(e)=>{
         e.preventDefault();  //here i stop the default behaviour of form
