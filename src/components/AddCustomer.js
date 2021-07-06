@@ -53,7 +53,12 @@ const AddCustomer=()=>{
             }
         })
         .catch(err=>{
-            console.log(err);
+            new Noty({
+                text: `${err}`,
+                layout:'topCenter',
+                timeout:1000,
+                type:'error'
+            }).show();
         })
     }
     return(

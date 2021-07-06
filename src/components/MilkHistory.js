@@ -18,11 +18,13 @@ const MilkHistory=()=>{
     }
     const onSubmits=(e)=>{
         e.preventDefault();  //here i stop the default behaviour of form
-        // setLoading(true);
+        setLoading(true);
+        setLoaded(false);
         e.target.reset(); //for erase fields after submit form
         // console.log(customerId);
          axios.get(`https://dairymilkapi.herokuapp.com/findMilkData/${customerId}`)
        .then((data)=>{
+         setLoading(false);
          setLoaded(true);
          if(data.data.message){
              setLoaded(false);
@@ -43,7 +45,14 @@ const MilkHistory=()=>{
              setTotal(total_liter);
          }
         })
-        .catch(err=>console.log(err));
+        .catch(err=>{
+            new Noty({
+                text: `${err}`,
+                layout:'topCenter',
+                timeout:1000,
+                type:'error'
+            }).show();
+        });
          setCustomerId(null);
         //you can submit here
     }

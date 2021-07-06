@@ -29,7 +29,7 @@ const AddMilk=()=>{
         axios(config).then(res=>{
             
             if(res.data.User){
-                console.log(res.data.User);
+                // console.log(res.data.User);
                
                     new Noty({
                         text: `${res.data.User}`,
@@ -47,11 +47,16 @@ const AddMilk=()=>{
                         type:'success'
                     }).show();
                   }, 500);
-                console.log("done");
+                // console.log("done");
             }
         })
         .catch(err=>{
-            console.log(err);
+            new Noty({
+                text: `${err}`,
+                layout:'topCenter',
+                timeout:1000,
+                type:'error'
+            }).show();
         })
     }
     return(
@@ -66,6 +71,7 @@ const AddMilk=()=>{
                     <label htmlFor="">Enter fat</label><br />
                     <input type="text" name="fat" onChange={onChanges} /><br /><br />
                     <button type="submit">Submit</button>
+                    <br /><br />
                 </form>
             </div>
         </>
