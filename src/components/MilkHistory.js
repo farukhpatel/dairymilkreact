@@ -71,7 +71,7 @@ const MilkHistory=()=>{
         </>
     );
    }
-   else if(loading && data.length==0){
+   else if(loading && data.length==0 && !loaded){
         return(
             <h1>Loading...</h1>
         );
