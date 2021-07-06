@@ -70,7 +70,7 @@ const MilkHistory=()=>{
         </>
     );
    }
-   else if(loading && !loaded){
+   if(loading && !loaded){
         return(
             <h1>Loading...</h1>
         );
@@ -80,7 +80,7 @@ const MilkHistory=()=>{
 //         <h1>{error}</h1>
 //     );
 // }
-   else if(loaded){             
+   else(loaded){             
        return(
          <div >
              <h1 style={{display:'block'}}>Your milk History for customerId {customerId}</h1>
