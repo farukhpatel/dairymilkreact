@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Noty from 'noty';
@@ -14,7 +13,7 @@ const MilkHistory=()=>{
     const [data,setData]=useState([]);
     const [error,setError]=useState(null);
     const onChanges=(e)=>{       
-        setCustomerId(Number(e.target.value));
+        setCustomerId(e.target.value);
     }
     const onSubmits=(e)=>{
         e.preventDefault();  //here i stop the default behaviour of form
@@ -24,7 +23,7 @@ const MilkHistory=()=>{
         // console.log(customerId);
          axios.get(`https://dairymilkapi.herokuapp.com/findMilkData/${customerId}`)
        .then((data)=>{
-        setLoading(false);
+         setLoading(false);
          setLoaded(true);
          if(data.data.message){
              setLoaded(false);
@@ -57,7 +56,7 @@ const MilkHistory=()=>{
         //you can submit here
     }
    
-   if(!loaded && !loading){
+   if(!loaded){
     return(
         <>
             <h1>MilkHistory {customerId}</h1>
@@ -71,7 +70,7 @@ const MilkHistory=()=>{
         </>
     );
    }
-   else if(loading && data.length==0 && !loaded){
+   else if(loading && !loaded){
         return(
             <h1>Loading...</h1>
         );
